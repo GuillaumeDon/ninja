@@ -1,0 +1,219 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#scene{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('rsx/scene2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.player{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+}
+
+.player .player-head{
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.player .player-body{
+    width: 170px;
+    height: 150px;
+}
+
+#player1{
+    position: absolute;
+    right: 150px;
+    bottom: 100px;
+}
+
+#player1 .player-head{
+    background-image: url('rsx/player1-head.png');
+    background-repeat: no-repeat;
+    top: 30px;
+    right: 18px;
+}
+
+#player1 .player-body{
+    background-image: url('rsx/player1-body.png');
+    background-repeat: no-repeat;
+}
+
+@keyframes player1-head-choped {
+    0%   {transform: rotate(0deg); left:0; top:0;}
+    100% {transform: rotate(359deg); left:100px; top:225px;}
+}
+#player1.loser .player-head {
+    animation-name: player1-head-choped;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay:0.4s;
+}
+
+@keyframes player1-body-escape {
+    0%   {height: 150px; width:150px;}
+    100% {height: 50px; width:200px;}
+}
+#player1.winner .player-body{
+    animation-name: player-body-escape;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay:0.1s;
+    background-image: url('rsx/player1-escape.png');
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 190px;
+    position: absolute;
+    bottom: -85px;
+}
+
+#player1.winner .player-head{
+    display: none;
+}
+
+
+#player2{
+    position: absolute;
+    left: 150px;
+    bottom: 100px;
+    justify-content: flex-start;
+}
+
+#player2 .player-head{
+    background-image: url('rsx/player2-head.png');
+    background-repeat: no-repeat;
+    top: 12px;
+    right: 9px;
+}
+
+#player2 .player-body{
+    background-image: url('rsx/player2-body.png');
+    background-repeat: no-repeat;
+}
+
+@keyframes player2-head-choped {
+    0%   {transform: rotate(0deg); left:0; top:0;}
+    100% {transform: rotate(359deg); left:-100px; top:225px;}
+}
+#player2.loser .player-head {
+    animation-name: player2-head-choped;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay:0.4s;
+}
+
+@keyframes player2-body-escape {
+    0%   {height: 150px; width:150px;}
+    100% {height: 50px; width:200px;}
+}
+#player2.winner .player-body{
+    animation-name: player-body-escape;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay:0.1s;
+    background-image: url('rsx/player2-escape.png');
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 190px;
+    position: absolute;
+    bottom: -85px;
+}
+
+#player2.winner .player-head{
+    display: none;
+}
+
+
+.shuriken{
+    width: 40px;
+    height: 20px;
+    background-image: url('rsx/shuriken.png');
+    background-repeat: no-repeat;
+}
+
+.shuri-start{
+    position: absolute;
+    bottom: 100px;
+}
+
+#player1 .shuri-start{
+    left:-4px;
+    bottom: 74px;
+}
+
+#player2 .shuri-start{
+    left:147px;
+    bottom: 103px;
+}
+
+
+@keyframes shuri-kill-player1 {
+    0%   {transform: rotate(0deg); left:80px;}
+    100% {transform: rotate(359deg);left:100vw;  bottom:265px;}
+}
+#player2.playing .shuriken {
+    animation-name: shuri-kill-player1;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shuri-kill-player2 {
+    0%   {transform: rotate(0deg); left:80px;}
+    100% {transform: rotate(0deg); left:-100vw; bottom:265px;}
+}
+#player1.playing .shuriken {
+    animation-name: shuri-kill-player2;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+
+#playAgain {
+    padding: 12px 20px;
+    background-color: #fda301;
+    color: #1e1526;
+    border-radius: 30px;
+    font-size: 18px;
+    position: absolute;
+    left: calc(50% - 75px);
+    top: 50%;
+    border: 1px solid;
+    opacity: 0;
+    cursor: pointer;
+}
+
+@keyframes playAgain-show {
+    0%   {opacity: 0}
+    100% {opacity: 100}
+}
+.playAgain-show {
+    animation-name: playAgain-show;
+    animation-duration: 0.5s;
+    animation-delay:0.4s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+#music-control {
+    position: absolute;
+    top: 13px;
+    left: calc(50% - 150px);
+}
